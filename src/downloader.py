@@ -66,16 +66,15 @@ class TelegramArchiver:
         full_channel = await self.client.get_input_entity(entity)
         
         # جلب تفاصيل إضافية عن القناة
-        channel_info = await self.client.get_full_chat(entity)
-        
-        channel_data = {
+                channel_data = {
             "channel_id": str(entity.id),
             "username": entity.username,
             "title": entity.title,
-            "description": channel_info.full_chat.about if hasattr(channel_info, 'full_chat') else "",
-            "member_count": channel_info.full_chat.participants_count if hasattr(channel_info, 'full_chat') else 0,
+            "description": "",
+            "member_count": 0,
             "archived_at": datetime.now().isoformat()
         }
+
         self.db.upsert_channel(channel_data)
         
         # 2. استرجاع التقدم الحالي (للـ Resume)
