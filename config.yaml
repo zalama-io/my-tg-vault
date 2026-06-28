@@ -1,0 +1,21 @@
+telegram:
+  api_id: 123456          # هتحط مكان الرقم ده الـ API ID بتاعك بعدين
+  api_hash: "YOUR_HASH"   # هتحط مكان النص ده الـ API HASH بتاعك بعدين
+  session_name: "archiver"
+
+channels:
+  - "channel_username_1"  # هنا هتحط معرفات القنوات اللي عايز تنسخها (بدون علامة @)
+  - "channel_username_2"
+
+
+settings:
+  download_media: true
+  max_concurrent_downloads: 3
+  batch_size: 100          # عدد الرسائل في كل طلب
+  retry_attempts: 3
+  delay_between_batches: 1 # ثانية - لتجنب Rate Limiting
+
+output:
+  archive_dir: "./archive"
+  data_dir: "./data"
+  logs_dir: "./logs"
