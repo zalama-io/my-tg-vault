@@ -269,15 +269,16 @@ class WebGenerator:
                     rel_path = f"{f_type}s/{msg['file_name']}"
                     media_html = f'<a class="doc-link" href="{rel_path}" target="_blank">📁 ملف: {msg["file_name"] or "تحميل"}</a>'
                     
-            content_html += f"""
-            <div class="message" id="msg_{msg['message_id']}">
-                {% if msg['text'] %}
-                    <div class="message-text">{msg['text']}</div>
-                {% endif %}
-                {media_html}
-                <div class="message-time">{time_str}</div>
-            </div>
+                        content_html += """
+            <div class="message" id="msg_""" + str(msg['message_id']) + """">
+                """ + (f'<div class="message-text">{msg["text"]}</div>' if msg["text"] else "") + """
+                """ + media_html + """
+                <div class="message-time">""" + time_str + """</div>
+             </div>
             """
+
+
+                
         content_html += "</div>"
         
         # استبدال الجينجا يدوياً للنصوص لعدم التضارب
